@@ -61,16 +61,16 @@ while True:
         cv2.circle(frame, (cx, cy), 4, (0, 0, 255), -1)
 
         if cy > cy1 - offset and cy < cy1 + offset:
-            cv2.putText(frame, str("THIS CAR CROSSED LINE 2"), (cx, cy - 15), cv2.FONT_HERSHEY_COMPLEX, 0.8, (0, 255, 255), 1)
-            print("THIS CAR CROSSED LINE 2")
-            t1 = time.time()
-            print("t2 value is " + str(t1))
-            time_list.append(t1)
-        if cy > cy2 - offset and cy < cy2 + offset:
             cv2.putText(frame, str("THIS CAR CROSSED LINE 1"), (cx, cy - 15), cv2.FONT_HERSHEY_COMPLEX, 0.8, (0, 255, 255), 1)
             print("THIS CAR CROSSED LINE 1")
+            t1 = time.time()
+            print("t1 value is " + str(t1))
+            time_list.append(t1)
+        if cy > cy2 - offset and cy < cy2 + offset:
+            cv2.putText(frame, str("THIS CAR CROSSED LINE 2"), (cx, cy - 15), cv2.FONT_HERSHEY_COMPLEX, 0.8, (0, 255, 255), 1)
+            print("THIS CAR CROSSED LINE 2")
             t2 = time.time()
-            print("t1 value is " + str(t2))
+            print("t2 value is " + str(t2))
             time_list.append(t2)
 
     if len(time_list) == 2:
