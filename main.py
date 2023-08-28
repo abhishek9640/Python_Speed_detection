@@ -29,6 +29,9 @@ offset = 5
 vh_up = {}
 time_list = []
 
+# frame_rate = 25  # Desired frame rate (frames per second)
+frame_delay = 0.00001
+
 while True:    
     ret, frame = cap.read()
     if not ret:
@@ -80,7 +83,13 @@ while True:
             time1 = time_list[1] - time_list[0]
         elif time_list[0] > time_list[1]:
             time1 = time_list[0] - time_list[1]
-        print("********Speed is: ", (distance / time1) * 3.6, "km/hr*********")
+        speed_kmh = (distance / time1) * 3.6
+        print("********Speed is: ", speed_kmh, "km/hr*********")
+
+        # You can capture the calculated speed and save it to a file or a variable
+        with open("speed_log.txt", "a") as speed_file:
+            speed_file.write(f"Speed: {speed_kmh} km/hr\n")
+
         time_list = []
 
     cv2.line(frame, (306, cy1), (800, cy1), (255, 255, 255), 1)
@@ -88,6 +97,8 @@ while True:
     cv2.imshow("RGB", frame)
     if cv2.waitKey(1) & 0xFF == 27:
         break
+
+    time.sleep(frame_delay)
 
 cap.release()
 cv2.destroyAllWindows()
