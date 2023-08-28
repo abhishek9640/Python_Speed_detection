@@ -30,7 +30,7 @@ vh_up = {}
 time_list = []
 
 # frame_rate = 25  # Desired frame rate (frames per second)
-frame_delay = 0.00001
+# frame_delay = 0.00001
 
 while True:    
     ret, frame = cap.read()
@@ -98,7 +98,7 @@ while True:
     if cv2.waitKey(1) & 0xFF == 27:
         break
 
-    time.sleep(frame_delay)
+    # time.sleep(frame_delay)
 
 cap.release()
 cv2.destroyAllWindows()
